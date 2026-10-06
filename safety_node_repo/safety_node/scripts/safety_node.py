@@ -51,7 +51,7 @@ class SafetyNode(Node):
             brake_msg = AckermannDriveStamped()
             brake_msg.drive.speed = 0.0
             self.drive_pub.publish(brake_msg)
-            # self.get_logger().warn('brake!') test
+            # self.get_logger().warn('brake') test
             
         pass
 
