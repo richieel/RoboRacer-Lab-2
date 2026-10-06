@@ -44,14 +44,14 @@ class SafetyNode(Node):
         with np.errstate(divide='ignore', invalid='ignore'):
             iTTC = np.where(denominator > 0, scan_msg.ranges / denominator, np.inf)
 
-        self.get_logger().info(f'speed={self.speed}, min_iTTC={np.min(iTTC)}')
+        # self.get_logger().info(f'speed={self.speed}, min_iTTC={np.min(iTTC)}') for test
 
         threshold = 1.0
         if np.any(iTTC < threshold):
             brake_msg = AckermannDriveStamped()
             brake_msg.drive.speed = 0.0
             self.drive_pub.publish(brake_msg)
-            self.get_logger().warn('BRAKING!')
+            # self.get_logger().warn('brake!') test
             
         pass
 
